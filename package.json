@@ -14,11 +14,13 @@
     "@emotion/react": "11",
     "@emotion/styled": "11",
     "@fontsource/open-sans": "^4.5.10",
+    "dotenv": "^16.0.1",
     "firebase": "^9.8.2",
     "framer-motion": "6",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-firebase-hooks": "^5.0.3",
     "recoil": "^0.7.3"
   },
   "devDependencies": {
