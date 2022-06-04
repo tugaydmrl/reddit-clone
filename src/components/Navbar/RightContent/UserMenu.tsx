@@ -40,8 +40,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
                             <Icon fontSize={24} color="gray.400" mr={1} as={VscAccount} />
                         )
                         }
-                        <ChevronDownIcon />
                     </Flex>
+                    <ChevronDownIcon />
                 </Flex>
             </MenuButton>
             <MenuList>
