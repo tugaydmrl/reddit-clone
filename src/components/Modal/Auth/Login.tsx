@@ -40,8 +40,24 @@ const Login: React.FC<LoginProps> = () => {
             <Input required name="password" placeholder="password" type="password" mb={2} onChange={onChange} fontSize="10pt" _placeholder={{ color: "gray.500" }} _hover={{ bg: "white", border: "1px solid", borderColor: "blue.500" }} _focus={{ outline: "none", bg: "white", border: "1px solid", borderColor: "blue.500" }} />
             <Text textAlign="center" color="red" fontSize="10pt">{FIREBASE_ERRORS[error?.message as keyof typeof FIREBASE_ERRORS]}</Text>
             <Button width="100%" height="36px" mt={2} mb={2} type="submit">Log In</Button>
+            <Flex justifyContent="center" mb={2}>
+                <Text fontSize="9pt" mr={1}>
+                    Forgot your
+                </Text>
+                <Text fontSize="9pt" color="blue.500" cursor="pointer" onClick={() =>
+                    setAuthModalState((prev) => ({
+                        ...prev,
+                        view: "resetPassword"
+                    }))
+                }>
+                    password
+                </Text>
+                <Text fontSize="9pt" ml={0.5}>
+                    ?
+                </Text>
+            </Flex>
             <Flex fontSize="9pt" justifyContent="center">
-                <Text mr={1}>New here?</Text>
+                <Text mr={1}>New to Reddit?</Text>
                 <Text color="blue.500" fontWeight={700} cursor="pointer" onClick={() =>
                     setAuthModalState((prev) => ({
                         ...prev,

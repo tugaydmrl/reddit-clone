@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 
 import AuthInputs from './AuthInputs'
 import OAuthButton from './OAuthButton'
+import ResetPassword from './ResetPassword'
 import { authModalState } from '../../../atoms/authModalAtom'
 import { auth } from '../../../firebase/clientApp'
 
@@ -37,10 +38,14 @@ const AuthModal: React.FC = () => {
                     <ModalCloseButton />
                     <ModalBody display="flex" flexDirection="column" alignItems="center" justifyContent="center" pb={6}>
                         <Flex direction="column" align="center" justify="center" width="70%">
-                            <OAuthButton />
-                            <Text color="gray.500" fontWeight={700}>OR</Text>
-                            <AuthInputs />
-                            {/* <ResetPassword /> */}
+                            {modalState.view === "login" || modalState.view === "signup" ?
+                                <>
+                                    <OAuthButton />
+                                    <Text color="gray.500" fontWeight={700}>OR</Text>
+                                    <AuthInputs />
+                                </> :
+                                <ResetPassword />
+                            }
                         </Flex>
                     </ModalBody>
                 </ModalContent>
