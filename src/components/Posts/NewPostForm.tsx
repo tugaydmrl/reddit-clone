@@ -13,6 +13,7 @@ import TextInputs from './PostForm/TextInputs'
 import ImageUpload from './PostForm/ImageUpload'
 import { Post } from '../../atoms/postsAtom'
 import { firestore, storage } from '../../firebase/clientApp'
+import useSelectFile from '../../hooks/useSelectFile'
 
 type NewPostFormProps = {
     user: User;
@@ -53,7 +54,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ user }) => {
         title: "",
         body: "",
     });
-    const [selectedFile, setSelectedFile] = useState<string>();
+    const { selectedFile, setSelectedFile, onSelectFile } = useSelectFile();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -98,20 +99,6 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ user }) => {
         setLoading(false);
     };
 
-    const onSelectImage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const reader = new FileReader();
-
-        if(event.target.files?.[0]){
-            reader.readAsDataURL(event.target.files[0]);
-        }
-
-        reader.onload = (readerEvent) => {
-            if(readerEvent.target?.result) {
-                setSelectedFile(readerEvent.target.result as string);
-            }
-        } 
-    };
-
     const onTextChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { target: { name, value }} = event;
         setTextInputs (prev => ({
@@ -129,7 +116,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ user }) => {
             </Flex>
             <Flex p={4}>
                 {selectedTab === "Post" && <TextInputs textInputs={textInputs} onChange={onTextChange} handleCreatePost={handleCreatePost} loading={loading} />}
-                {selectedTab === "Images & Video" && <ImageUpload selectedFile={selectedFile} onSelectImage={onSelectImage} setSelectedTab={setSelectedTab} setSelectedFile={setSelectedFile} />}
+                {selectedTab === "Images & Video" && <ImageUpload selectedFile={selectedFile} onSelectImage={onSelectFile} setSelectedTab={setSelectedTab} setSelectedFile={setSelectedFile} />}
             </Flex>
             {error && (
                 <Alert status="error">

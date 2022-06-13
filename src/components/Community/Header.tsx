@@ -3,7 +3,7 @@ import React from 'react'
 import { FaReddit } from 'react-icons/fa';
 
 import useCommunityData from '../../hooks/useCommunityData';
-import { Community } from '../../atoms/communitiesAtom'
+import { Community, communityState } from '../../atoms/communitiesAtom'
 
 type HeaderProps = {
     communityData: Community;
@@ -19,8 +19,8 @@ const Header: React.FC<HeaderProps> = ({ communityData }) => {
             <Box height="50%" bg="blue.400" />
             <Flex justify="center" bg="white" flexGrow={1}>
                 <Flex width="95%" maxWidth="850px">
-                    {communityData.imageURL ? (
-                        <Image />
+                    {communityStateValue.currentCommunity?.imageURL ? (
+                        <Image src={communityStateValue.currentCommunity?.imageURL} borderRadius="full" boxSize="66px" alt="Community Image" position="relative" top={-3} color="blue.500" border="4px solid white" />
                     ) : (
                         <Icon as={FaReddit} fontSize={64} position="relative" top={-3} color="blue.500" border="4px solid white" borderRadius="50%" />
                     )}
