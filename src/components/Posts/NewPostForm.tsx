@@ -91,6 +91,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ user }) => {
 
         } catch (error: any) {
             console.error("handleCreatePost error", error.message)
+            setError(true);
         }
         setLoading(false);
 
@@ -134,7 +135,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ user }) => {
                 <Alert status="error">
                     <AlertIcon />
                     <Text mr={2}>Error creating post</Text>
-                    <CloseButton position="absolute" right="8px" top="8px" />
+                    <CloseButton position="absolute" right="8px" top="8px" onClick={() => setError(false)} />
                 </Alert>
             )}
         </Flex>
