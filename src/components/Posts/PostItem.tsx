@@ -1,4 +1,4 @@
-import { Flex, Icon, Image, Skeleton, Stack, Text } from '@chakra-ui/react';
+import { Alert, AlertIcon, CloseButton, Flex, Icon, Image, Skeleton, Spinner, Stack, Text } from '@chakra-ui/react';
 import moment from 'moment';
 import React, { useState } from 'react'
 import { AiOutlineDelete } from 'react-icons/ai';
@@ -12,12 +12,30 @@ type PostItemProps = {
     userIsCreator: boolean;
     userVoteValue?: number;
     onVote: () => {};
-    onDeletePost: () => {};
+    onDeletePost: (post: Post) => Promise<boolean>;
     onSelectPost: () => void;
 }
 
 const PostItem: React.FC<PostItemProps> = ({ post, userIsCreator, userVoteValue, onVote, onDeletePost, onSelectPost }) => {
     const [loadingImage, setLoadingImage] = useState(true);
+    const [error, setError] = useState(false);
+    const [loadingDelete, setLoadingDelete] = useState(false);
+
+    const handleDelete = async () => {
+        setLoadingDelete(true);
+        try {
+            const success = await onDeletePost(post);
+
+            if(!success) {
+                throw new Error("Failed to delete post")
+            }
+
+        } catch (error: any) {
+            setError(error.message)
+        }
+        setLoadingDelete(false);
+    }
+    
   return (
     <Flex border="1px solid" bg="white" borderColor="gray.300" borderRadius={4} _hover={{ borderColor: "gray.500" }} cursor="pointer" onClick={onSelectPost}>
         <Flex direction="column" align="center" bg="gray.100" p={2} width="40px" borderRadius={4}>
@@ -26,6 +44,13 @@ const PostItem: React.FC<PostItemProps> = ({ post, userIsCreator, userVoteValue,
             <Icon as={userVoteValue === -1 ? IoArrowDownCircleSharp : IoArrowDownCircleOutline } color={userVoteValue === -1 ? "#4379ff" : "gray.400" } fontSize={22} onClick={onVote} cursor="pointer" />
         </Flex>
         <Flex direction="column" width="100%">
+        {error && (
+                <Alert status="error">
+                    <AlertIcon />
+                    <Text mr={2}>{error}</Text>
+                    <CloseButton position="absolute" right="8px" top="8px" onClick={() => setError(false)} />
+                </Alert>
+            )}
             <Stack spacing={1} p="10px">
                 <Stack direction="row" spacing={0.6} align="center" fontSize="9pt">
                     {/* Homepage Check */}
@@ -56,9 +81,15 @@ const PostItem: React.FC<PostItemProps> = ({ post, userIsCreator, userVoteValue,
                     <Text fontSize="9pt">Save</Text>
                 </Flex>
                 {userIsCreator && (
-                    <Flex align="center" p="8px 10px" borderRadius={4} _hover={{ bg: "gray.200" }} cursor="pointer" onClick={onDeletePost}>
-                        <Icon as={AiOutlineDelete} mr={2} />
-                        <Text fontSize="9pt">Delete</Text>
+                    <Flex align="center" p="8px 10px" borderRadius={4} _hover={{ bg: "gray.200" }} cursor="pointer" onClick={handleDelete}>
+                        {loadingDelete ? (
+                            <Spinner size="sm" />
+                        ) : (
+                            <>
+                                <Icon as={AiOutlineDelete} mr={2} />
+                                <Text fontSize="9pt">Delete</Text>
+                            </>
+                        )}
                     </Flex>
                 )}
             </Flex>
