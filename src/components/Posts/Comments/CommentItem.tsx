@@ -27,14 +27,14 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment, onDeleteComment, loa
   return (
     <Flex>
         <Box mr={2}>
-            <Icon as={FaReddit} fontSize={30} color="gray.300" />
+            <Icon as={FaReddit} fontSize={30} color="gray.500" />
         </Box>
         <Stack spacing={1}>
             <Stack direction="row" align="center" fontSize="8pt">
                 <Text fontWeight={700} >{comment.creatorDisplayText}</Text>
                 <Text color="gray.300">{moment(new Date(comment.createdAt.seconds * 1000)).fromNow()}</Text>
+            {loadingDelete && <Spinner size="sm" color="gray.300" />}
             </Stack>
-            {loadingDelete && <Spinner size="sm" />}
             <Text fontSize="10pt">{comment.text}</Text>
             <Stack direction="row" align="center" cursor="pointer" color="gray.500">
                 <Icon as ={IoArrowUpCircleOutline} />
