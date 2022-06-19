@@ -26,6 +26,7 @@ const CreatePostLink: React.FC = () => {
 
         if(communityId) {
             router.push(`/r/${communityId}/submit`);
+            return;
         }
 
         // open our directory menu
