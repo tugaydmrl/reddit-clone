@@ -21,7 +21,7 @@ const Communities: React.FC<CommunitiesProps> = () => {
                 <Text pl={3} mb={1} fontSize="7pt" fontWeight={500} color="gray.500">MODERATING</Text>
             </Box>
             {mySnippets.filter(snippet => snippet.isModerator).map(snippet => (
-                <MenuListItem key={snippet.communityId} icon={FaReddit} displayText={`r/${snippet.communityId}`} link={`/r/${snippet.communityId}`} iconColor="blue.500" imageURL={snippet.imageURL} />
+                <MenuListItem key={snippet.communityId} icon={FaReddit} displayText={`r/${snippet.communityId}`} link={`/r/${snippet.communityId}`} iconColor="brand.100" imageURL={snippet.imageURL} />
             ))}
             <Box mt={3} mb={4}>
                 <Text pl={3} mb={1} fontSize="7pt" fontWeight={500} color="gray.500">MY COMMUNITIES</Text>
