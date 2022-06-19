@@ -45,7 +45,7 @@ Start the server
 
 ## Demo
 
-[Live](reddit.tugaydemirel.com)
+[Live](https://reddit.tugaydemirel.com/)
 
 
 ## Environment Variables
