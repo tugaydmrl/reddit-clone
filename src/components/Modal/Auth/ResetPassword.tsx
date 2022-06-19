@@ -35,7 +35,7 @@ const ResetPassword: React.FC = () => {
             ) : (
                 <>
                     <Text fontSize="sm" textAlign="center" mb={2}>
-                        Enter the email associated with your account and we'll send you a reset link
+                        {`Enter the email associated with your account and we'll send you a reset link`}
                     </Text>
                     <form onSubmit={onSubmit} style={{ width: "100%" }}>
                         <Input required name="email" placeholder="email" type="email" mb={2} onChange={(event) => setEmail(event?.target.value)} fontSize="10pt" _placeholder={{ color: "gray.500" }} _hover={{ bg: "white", border: "1px solid", borderColor: "blue.500", }} _focus={{ outline: "none", bg: "white", border: "1px solid", borderColor: "blue.500" }} bg="gray.50" />
