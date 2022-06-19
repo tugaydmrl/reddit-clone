@@ -12,7 +12,7 @@ export type DirectoryMenuItem = {
 
 interface DirectoryMenuState {
     isOpen: boolean;
-    sselectedMenuItem: DirectoryMenuItem;
+    selectedMenuItem: DirectoryMenuItem;
 }
 
 export const defaultMenuItem: DirectoryMenuItem = {
@@ -24,7 +24,7 @@ export const defaultMenuItem: DirectoryMenuItem = {
 
 export const defaultMenuState: DirectoryMenuState = {
     isOpen: false,
-    sselectedMenuItem: defaultMenuItem
+    selectedMenuItem: defaultMenuItem
 }
 
 export const directoryMenuState = atom<DirectoryMenuState>({
