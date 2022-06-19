@@ -55,7 +55,7 @@ const Recommendations: React.FC = () => {
                         const isJoined = !!communityStateValue.mySnippets.find(snippet => snippet.communityId === community.id);
                         return (
                             <Link key={community.id} href={`/r/${community.id}`}>
-                                <Flex position="relative" align="center" fontSize="10pt" borderBottom="1px solid" borderColor="gray.200" p="10px 12px">
+                                <Flex position="relative" align="center" fontSize="10pt" borderBottom="1px solid" borderColor="gray.200" p="10px 12px" cursor="pointer">
                                     <Flex width="80%" align="center">
                                         <Flex width="15%">
                                             <Text>{index + 1}</Text>
