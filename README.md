@@ -1,34 +1,110 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Reddit Clone
 
-First, run the development server:
+Clone application that contains many functions of Reddit, one of the most popular social media applications in the world.
+
+
+
+## Tech Stack
+
+**Client:** React, Next.js, Typescript, ChakraUI, Recoil, React-Icons, Moment
+
+**Server:** Firebase v9
+
+
+## Run Locally
+
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
+  git clone https://github.com/tugaydmrl/reddit-clone
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Go to the project directory
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+  cd reddit-clone
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Install dependencies
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+  yarn
+  # or
+  npm install
+```
 
-## Learn More
+Start the server
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+  yarn dev
+  # or
+  npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Demo
 
-## Deploy on Vercel
+[Live](https://reddit.tugaydemirel.com/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`NEXT_PUBLIC_FIREBASE_API_KEY`
+
+`NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
+
+`NEXT_PUBLIC_FIREBASE_PROJECT_ID`
+
+`NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
+
+`NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
+
+`NEXT_PUBLIC_FIREBASE_APP_ID`
+
+These variables will be provided to you from Google Firebase.
+
+
+## Features
+
+- Reusable components
+- Responsive design
+- User Authentication (You can Sign Up with E-Mail or Google Provider)
+- Create or join community
+- Create post in a community
+- Vote on posts
+- Store data on Google Firestore
+
+## Screenshots
+Some screenshots from app
+
+#### Auth Login Modal
+![Auth Login Modal](https://user-images.githubusercontent.com/78755726/174494339-0325b76c-8b21-41d9-840b-1fca840ce403.png)
+
+#### Auth Sign Up Modal
+![Auth Sign Up Modal](https://user-images.githubusercontent.com/78755726/174494274-8b2a8c17-b6b2-47c9-a138-89a1aaed6435.png)
+
+#### Homepage Logged-Out User
+![Homepage Logged-Out User](https://user-images.githubusercontent.com/78755726/174494275-340220ad-90a2-45d8-b8c9-a400ec60aee4.png)
+
+#### Homepage Logged-In User
+![Homepage Logged-In User](https://user-images.githubusercontent.com/78755726/174494288-bceea5e1-4e12-4681-93c9-99398610ca66.png)
+
+#### Community Page
+![Community Page](https://user-images.githubusercontent.com/78755726/174494295-73b2b257-dd81-4095-b70f-24d489da8187.png)
+
+#### Create Post Page
+![Create Post Page](https://user-images.githubusercontent.com/78755726/174494328-54d5fc3e-8aa1-4754-a408-a48c81da487b.png)
+
+#### Mobile
+![Mobile](https://user-images.githubusercontent.com/78755726/174494310-3e3eb2ff-49e6-46cb-b144-d4b759d2a50c.png)
+
+#### Firebase Firestore 
+![Firebase](https://user-images.githubusercontent.com/78755726/174494302-cde167f6-1700-4a4c-a7eb-8baa89917f28.png)
+
+## Appendix
+
+Some features are decorative (Premium, Comment Edit, Search Button etc.)
+
